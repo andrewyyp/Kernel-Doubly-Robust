@@ -9,7 +9,10 @@ source("NEval.R")
 dim_x <- 5
 dim_z <- 2
 dim_w <- 2
+### One can choose different options below for replicating different cases of the simulation
 type <- "parametric"
+#type <- "highd"
+#type <- "nonparametric"
 kernel_sigma_list <- c(5, 15, 35, 60, 100, 150)  # default 15
 CV_K_fold = 5
 CF_K_fold = 5
@@ -58,7 +61,7 @@ lm_Qq0 <- hyperparameters[8]
 est <- CF_eval(data, kernel_sigma, lm_Hh1, lm_Qh1, lm_Hh0, lm_Qh0, lm_Hq1, lm_Qq1, lm_Hq0, lm_Qq0, CF_K_fold, Nystroem = TRUE, appro_rate = 0.05)
 est <- Re(est)
 
-write.csv(est, file= paste0("Res/", type, "_", N, "_", njob,".csv"), row.names = FALSE)
+write.csv(est, file= paste0(type, "_", N, ".csv"), row.names = FALSE)
 
 
 
