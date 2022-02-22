@@ -1,19 +1,3 @@
-# eval <- function(data, kernel_sigma, lm_Qh, lm_Hh, lm_Qq, lm_Hq){
-#   
-#   n <- length(data$Y)
-#   
-#   ## Gaussian RBF kernel ############################################################
-#   h_arg <- cbind(data$W,data$X)
-#   q_arg <- cbind(data$Z,data$X)
-#   K_H <- rbfkernel(h_arg, sigma = kernel_sigma)
-#   K_Q <- rbfkernel(q_arg, sigma = kernel_sigma)
-#   ###################################################################################
-#   
-#   ## Optimization ###################################################################
-#   ident_n <- diag(rep(1,n))
-#   D1 <- diag(as.numeric(data$A),n,n)
-#   D0 <- diag(as.numeric(1-data$A),n,n)
-#   ## Optimization h ##
 insample_eval <- function(data, kernel_sigma, lm_Hh1, lm_Qh1, lm_Hh0, lm_Qh0, lm_Hq1, lm_Qq1, lm_Hq0, Nystroem = FALSE, appro_rate = 0.05){
   
   if (!Nystroem) {
